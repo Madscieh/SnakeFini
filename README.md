@@ -1,2 +1,2 @@
 # SnakeFini
- A Snake game based on the versions from CSimmonsCs and CodeMonkey. Created for educational purposes.
+ A Snake game based on the versions from CSimmonsCS and CodeMonkey. Created for educational purposes.

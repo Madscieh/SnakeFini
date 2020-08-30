@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using CodeMonkey;
+using UnityEditor;
 
 public class LevelGrid : MonoBehaviour
 {
@@ -10,6 +11,8 @@ public class LevelGrid : MonoBehaviour
     private int height;
     private int width;
     private Snake snake;
+
+    public GameObject[] myObjects = {GameAssets.i.GummyBear, GameAssets.i.JellyThingie, GameAssets.i.Marshmellow, GameAssets.i.BearHead, GameAssets.i.Spaghetti};
 
     public LevelGrid(int width, int height)
     {
@@ -34,9 +37,11 @@ public class LevelGrid : MonoBehaviour
         }
         while (snake.GetFullSnakeGridPosition().IndexOf(foodGridPosition) != -1);
 
-        foodGameObject = new GameObject("Food", typeof(SpriteRenderer));
-        // Comida aleatória, criar no Game Assets
-        foodGameObject.GetComponent<SpriteRenderer>().sprite = GameAssets.i.foodSprite;
+        // foodGameObject = new GameObject("Food", typeof(SpriteRenderer));
+        // foodGameObject.GetComponent<SpriteRenderer>().sprite = GameAssets.i.foodSprite;
+        
+        int randomIndex = Random.Range(0, 5);
+        foodGameObject = Instantiate(myObjects[randomIndex]);
         foodGameObject.transform.position = new Vector3(foodGridPosition.x, foodGridPosition.y);
     }
 
@@ -47,7 +52,7 @@ public class LevelGrid : MonoBehaviour
             Object.Destroy(foodGameObject);
             SpawnFood();
             GameHandler.AddScore();
-            CMDebug.TextPopupMouse("Snake Ate Food!");
+            // CMDebug.TextPopupMouse("Snake Ate Food!");
             return true;
         }
         return false;

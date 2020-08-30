@@ -263,9 +263,9 @@ public class Snake : MonoBehaviour
                         default:
                             angle = 180; break;
                         case Direction.Down:
-                            angle = 180 - 45; break;
-                        case Direction.Up:
                             angle = 180 + 45; break;
+                        case Direction.Up:
+                            angle = 180 - 45; break;
                     }
                     break;
                 case Direction.Right:
@@ -274,9 +274,9 @@ public class Snake : MonoBehaviour
                         default:
                             angle = 0; break;
                         case Direction.Down:
-                            angle = 45; break;
+                            angle = - 45; break;
                         case Direction.Up:
-                            angle = -45; break;
+                            angle = + 45; break;
                     }
                     break;
             }

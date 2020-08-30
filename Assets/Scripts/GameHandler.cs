@@ -25,7 +25,7 @@ public class GameHandler : MonoBehaviour {
     private void Start() {
         Debug.Log("GameHandler.Start");
 
-        levelGrid = new LevelGrid(20, 15);
+        levelGrid = new LevelGrid(16, 12);
 
         snake.Setup(levelGrid);
         levelGrid.Setup(snake);

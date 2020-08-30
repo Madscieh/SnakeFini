@@ -13,6 +13,7 @@ public class LevelGrid : MonoBehaviour
 
     public LevelGrid(int width, int height)
     {
+        // Setup do LevelGrid no GameHandler
         this.width = width;
         this.height = height;
     }
@@ -26,12 +27,15 @@ public class LevelGrid : MonoBehaviour
 
     private void SpawnFood()
     {
+        // Evita que a comida surja sobre a cobra
         do
         {
             foodGridPosition = new Vector2Int(Random.Range(0, width), Random.Range(0, height));
-        } while (snake.GetFullSnakeGridPosition().IndexOf(foodGridPosition) != -1);
+        }
+        while (snake.GetFullSnakeGridPosition().IndexOf(foodGridPosition) != -1);
 
         foodGameObject = new GameObject("Food", typeof(SpriteRenderer));
+        // Comida aleatória, criar no Game Assets
         foodGameObject.GetComponent<SpriteRenderer>().sprite = GameAssets.i.foodSprite;
         foodGameObject.transform.position = new Vector3(foodGridPosition.x, foodGridPosition.y);
     }
@@ -63,7 +67,7 @@ public class LevelGrid : MonoBehaviour
         {
             gridPosition.y = height;
         }
-        if (gridPosition.y > height)
+        if(gridPosition.y > height)
         {
             gridPosition.y = 0;
         }
